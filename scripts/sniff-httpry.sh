@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
 
-httpry -i wlan1 -o /root/data/httpry.log
+httpry -d -i wlan1 -o /root/data/httpry.log -b /root/data/httpry.bin
 

@@ -1,0 +1,13 @@
+[Unit]
+Description=Rogue and Evil Access Point
+After=network.target dnsmasq.target hostapd.target
+
+[Service]
+# Type=forking
+ExecStart=/root/src/zlown/bin//zlown run
+# ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/var/run/zlown.pid
+
+[Install]
+WantedBy=multi-user.target
+
