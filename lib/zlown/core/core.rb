@@ -8,6 +8,8 @@ require 'fileutils'
 require 'highline'
 require 'yaml'
 
+require_relative '../config'
+
 module Zlown
   class Core
     def self.install(args = [], opts = {})
