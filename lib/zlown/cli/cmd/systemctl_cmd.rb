@@ -1,6 +1,6 @@
 require_relative '../shared'
 
-require_relative '../../daemon/daemon'
+require_relative '../../systemctl/systemctl'
 
 module Zlown::CLI
   desc 'Manage systemctl'
@@ -8,28 +8,28 @@ module Zlown::CLI
     c.desc 'Enable systemctl service'
     c.command 'enable' do |cmd|
       cmd.action do |global_options, options, args|
-        puts "Enabling systemctl service"
+        Zlown::Systemctl.enable(args, options)
       end
     end
  
     c.desc 'Disable systemctl service'
     c.command 'disable' do |cmd|
       cmd.action do |global_options, options, args|
-        puts "Disabling systemctl service"
+        Zlown::Systemctl.disable(args, options)
       end
     end
 
     c.desc 'Start systemctl service'
     c.command 'start' do |cmd|
       cmd.action do |global_options, options, args|
-        puts "Starting systemctl service"
+        Zlown::Systemctl.start(args, options)
       end
     end
 
     c.desc 'Stop systemctl service'
     c.command 'stop' do |cmd|
       cmd.action do |global_options, options, args|
-        puts "Stopping systemctl service"
+        Zlown::Systemctl.stop(args, options)
       end
     end
   end
