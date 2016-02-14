@@ -8,8 +8,8 @@ require 'fileutils'
 
 module Zlown
   class Core
-    APP_DIR = File.expand_path('~/.zlown')
-    APP_BINARY = File.expand_path('../../../../bin/zlown')
+    APP_DIR = File.expand_path('/root/.zlown')
+    APP_BINARY = File.expand_path('../../../../bin/zlown', __FILE__)
 
     SERVICE_TEMPLATE = File.expand_path('../../../../etc/systemd/system/zlown.service', __FILE__)
     SERVICE_FILE = File.expand_path("#{APP_DIR}/zlown.service")
@@ -18,6 +18,7 @@ module Zlown
 
     def self.init(args = [], opts = {})
       unless File.directory?(APP_DIR)
+        puts "Creating directory #{APP_DIR}"
         FileUtils.mkdir_p(APP_DIR)
       end
 
@@ -26,6 +27,7 @@ module Zlown
 
       # To write changes to the file, use:
       File.open(SERVICE_FILE, 'w') do |file|
+        puts "Writting file #{SERVICE_FILE}"
         file.puts content
       end
     end

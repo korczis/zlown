@@ -20,11 +20,12 @@ module Zlown::CLI
   end
 
   program_desc 'Rogue Access Point'
-end
 
 cmds = File.absolute_path(File.join(File.dirname(__FILE__), 'cmd'))
-Dir.glob(cmds + '/*.rb').each do |file|
+Dir.glob(cmds + '/**/*_cmd.rb').each do |file|
   require file
+end
+
 end
 
 Zlown::CLI.launch(ARGV)
