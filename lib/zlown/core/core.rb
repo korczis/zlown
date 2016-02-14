@@ -146,6 +146,10 @@ module Zlown
         puts "Writting file #{Zlown::Config::BOOT_SCRIPT}"
         file.puts content
       end
+
+      cmd = "chmod +x #{Zlown::Config::BOOT_SCRIPT}"
+      puts cmd
+      system cmd
     end
 
     def self.init_rc_local(args = [], opts = {})
