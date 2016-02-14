@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    zlown (0.0.2)
+    zlown (0.0.4)
       gli
+      highline (~> 1.7)
 
 GEM
   remote: https://rubygems.org/
@@ -50,7 +51,6 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.7)
-  highline (~> 1.7)
   rake (~> 10.0)
   rspec
   rubocop
