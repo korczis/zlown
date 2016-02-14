@@ -14,14 +14,23 @@ module Zlown::CLI
  
     c.desc 'Disable systemctl service'
     c.command 'disable' do |cmd|
+      cmd.action do |global_options, options, args|
+        puts "Disabling systemctl service"
+      end
     end
 
     c.desc 'Start systemctl service'
     c.command 'start' do |cmd|
+      cmd.action do |global_options, options, args|
+        puts "Starting systemctl service"
+      end
     end
 
     c.desc 'Stop systemctl service'
     c.command 'stop' do |cmd|
+      cmd.action do |global_options, options, args|
+        puts "Stopping systemctl service"
+      end
     end
   end
 end
