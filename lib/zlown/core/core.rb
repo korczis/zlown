@@ -47,14 +47,23 @@ module Zlown
     end
 
     def self.init_config_file(args = [], opts = {})
-      config = {}
+      config = {
+        upstream: 'eth0',
+        ap: 'wlan0',
+        driver: 'nl80211',
+        ssid: 'FreeWifi',
+        channel: 6
+      }
       if File.exist?(Zlown::Config::CONFIG_FILE)
         config = YAML.load(File.open(Zlown::Config::CONFIG_FILE))
       end
 
       cli = HighLine.new
-      config[:upstream] = cli.ask('upstream interface?') { |q| q.default = config[:upstream] || 'eth0' }
-      config[:ap] = cli.ask('wifi ap interface?') { |q| q.default = config[:ap] || 'wlan0pa' }
+      config[:upstream] = cli.ask('Upstream Interface?') { |q| q.default = config[:upstream] }
+      config[:ap] = cli.ask('Wi-Fi ap Interface?') { |q| q.default = config[:ap] }
+      config[:driver] = cli.ask('Wi-Fi Driver?') { |q| q.default = config[:driver] }
+      config[:ssid] = cli.ask('Wi-Fi SSID?') { |q| q.default = config[:ssid] }
+      config[:channel] = cli.ask('Wi-Fi Channel?') { |q| q.default = config[:channel] }
 
       puts "Writting config to #{Zlown::Config::CONFIG_FILE}"
       File.open(Zlown::Config::CONFIG_FILE, 'w') do |f|
