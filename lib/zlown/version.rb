@@ -5,5 +5,5 @@
 # LICENSE file in the root directory of this source tree.
 
 module Zlown
-  VERSION = '0.0.3'.freeze
+  VERSION = '0.0.4'.freeze
 end
