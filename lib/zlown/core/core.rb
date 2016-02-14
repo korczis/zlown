@@ -52,7 +52,7 @@ module Zlown
         ap: 'wlan0',
         driver: 'nl80211',
         ssid: 'FreeWifi',
-        channel: 6
+        channel: '6'
       }
       if File.exist?(Zlown::Config::CONFIG_FILE)
         config = YAML.load(File.open(Zlown::Config::CONFIG_FILE))
