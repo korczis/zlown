@@ -12,6 +12,20 @@ require_relative '../config'
 
 module Zlown
   class Core
+    def self.load_config(args = [], opts = {})
+      config = {
+        upstream: 'eth0',
+        ap: 'wlan0',
+        driver: 'nl80211',
+        ssid: 'FreeWifi',
+        channel: '6'
+      }
+
+      if File.exist?(Zlown::Config::CONFIG_FILE)
+        config = config.merge(YAML.load(File.open(Zlown::Config::CONFIG_FILE)))
+      end
+    end
+
     def self.install(args = [], opts = {})
       cmd = 'apt-get install -y hostapd dnsmasq wireless-tools iw wvdial'
       puts cmd
@@ -47,16 +61,7 @@ module Zlown
     end
 
     def self.init_config_file(args = [], opts = {})
-      config = {
-        upstream: 'eth0',
-        ap: 'wlan0',
-        driver: 'nl80211',
-        ssid: 'FreeWifi',
-        channel: '6'
-      }
-      if File.exist?(Zlown::Config::CONFIG_FILE)
-        config = YAML.load(File.open(Zlown::Config::CONFIG_FILE))
-      end
+      config = Core.load_config(args, opts)
 
       cli = HighLine.new
       config[:upstream] = cli.ask('Upstream Interface?') { |q| q.default = config[:upstream] }
@@ -69,6 +74,8 @@ module Zlown
       File.open(Zlown::Config::CONFIG_FILE, 'w') do |f|
         f.write config.to_yaml
       end
+
+      config
     end
 
     def self.init_systemctl(args = [], opts = {})
