@@ -99,7 +99,16 @@ module Zlown
     end
 
     def self.init_dnsmaq(args = [], opts = {})
-      # TODO: Implement
+      config = Core.load_config(args, opts)
+
+      template = File.read(Zlown::Config::DNSMASQ_TEMPLATE)
+      content = template.gsub('#{IFACE_AP}', config[:ap])
+
+      # To write changes to the file, use:
+      File.open(Zlown::Config::DNSMASQ_CONFIG, 'w') do |file|
+        puts "Writting file #{Zlown::Config::DNSMASQ_CONFIG}"
+        file.puts content
+      end
     end
 
     def self.init_hostapd(args = [], opts = {})
@@ -107,6 +116,21 @@ module Zlown
       cmd = "sed -i 's#^DAEMON_CONF=.*#DAEMON_CONF=/etc/hostapd/hostapd.conf#' /etc/init.d/hostapd"
       puts cmd
       system cmd
+
+      config = Core.load_config(args, opts)
+
+      template = File.read(Zlown::Config::HOSTAPD_TEMPLATE)
+      content = template
+                  .gsub('#{IFACE}', config[:ap])
+                  .gsub('#{DRIVER}', config[:driver])
+                  .gsub('#{SSID}', config[:ssid])
+                  .gsub('#{CHANNEL}', config[:channel])
+
+      # To write changes to the file, use:
+      File.open(Zlown::Config::HOSTAPD_CONFIG, 'w') do |file|
+        puts "Writting file #{Zlown::Config::HOSTAPD_CONFIG}"
+        file.puts content
+      end
     end
 
     def self.init_rc_local(args = [], opts = {})
