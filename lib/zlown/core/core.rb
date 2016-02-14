@@ -6,11 +6,14 @@
 
 require 'fileutils'
 require 'highline'
+require 'yaml'
 
 module Zlown
   class Core
     APP_DIR = File.expand_path('~/.zlown')
     APP_BINARY = File.expand_path('../../../../bin/zlown', __FILE__)
+
+    CONFIG_FILE = File.join(APP_DIR, 'zlown.yml')
 
     DATA_DIR = File.join(APP_DIR, 'data')
     RUN_DIR = File.join(APP_DIR, 'run')
@@ -51,9 +54,19 @@ module Zlown
         file.puts content
       end
 
+      config = {}
+      if File.exist?(CONFIG_FILE)
+        config = YAML.load(File.open(CONFIG_FILE))
+      end
+
       cli = HighLine.new
-      iface_upstream = cli.ask('upstream interface?') { |q| q.default = 'eth1' }
-      iface_ap = cli.ask('wifi ap interface?') { |q| q.default = 'wlan1' }
+      config[:upstream] = cli.ask('upstream interface?') { |q| q.default = config[:upstream] || 'eth0' }
+      config[:ap] = cli.ask('wifi ap interface?') { |q| q.default = config[:ap] || 'wlan0' }
+
+      puts "Writting config to #{CONFIG_FILE}"
+      File.open(CONFIG_FILE, 'w') do |f|
+        f.write config.to_yaml
+      end
 
       # See https://www.offensive-security.com/kali-linux/kali-linux-evil-wireless-access-point/
       cmd = "sed -i 's#^DAEMON_CONF=.*#DAEMON_CONF=/etc/hostapd/hostapd.conf#' /etc/init.d/hostapd"
