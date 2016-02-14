@@ -32,6 +32,16 @@ module Zlown
       cmd = "systemctl stop #{SERVICE_NAME}"
       system cmd
     end
+
+    def self.status(args = [], opts = {})
+      cmd = "systemctl status #{SERVICE_NAME}"
+      system cmd
+    end
+
+    def self.log(args = [], opts = {})
+      cmd = "journalctl -u #{SERVICE_NAME}"
+      system cmd
+    end
   end
 end
 

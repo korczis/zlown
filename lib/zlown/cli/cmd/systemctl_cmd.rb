@@ -32,5 +32,19 @@ module Zlown::CLI
         Zlown::Systemctl.stop(args, options)
       end
     end
+
+    c.desc 'Status of systemctl service'
+    c.command 'status' do |cmd|
+      cmd.action do |global_options, options, args|
+        Zlown::Systemctl.status(args, options)
+      end
+    end
+
+    c.desc 'Log of systemctl service'
+    c.command 'log' do |cmd|
+      cmd.action do |global_options, options, args|
+        Zlown::Systemctl.log(args, options)
+      end
+    end
   end
 end
