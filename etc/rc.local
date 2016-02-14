@@ -11,6 +11,6 @@
 #
 # By default this script does nothing.
 
-exec /root/scripts/enable-forwarding.sh
+exec /root/.zlown/enable-forwarding.sh
 
 exit 0

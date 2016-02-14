@@ -11,6 +11,9 @@ module Zlown
 
     CONFIG_FILE = File.join(APP_DIR, 'zlown.yml')
 
+    BOOT_SCRIPT = File.join(APP_DIR, 'enable-forwarding.sh')
+    BOOT_SCRIPT_TEMPLATE = File.expand_path('../../../scripts/enable-forwarding.sh', __FILE__)
+
     DNSMASQ_CONFIG = '/etc/dnsmasq.conf'
     DNSMASQ_TEMPLATE = File.expand_path('../../../etc/dnsmasq.conf', __FILE__)
 

@@ -133,8 +133,34 @@ module Zlown
       end
     end
 
+    def self.init_boot_script(args = [], opts = {})
+      config = Core.load_config(args, opts)
+
+      template = File.read(Zlown::Config::BOOT_SCRIPT_TEMPLATE)
+      content = template
+                  .gsub('#{IFACE}', config[:ap])
+                  .gsub('#{DRIVER}', config[:driver])
+                  .gsub('#{SSID}', config[:ssid])
+                  .gsub('#{CHANNEL}', config[:channel])
+
+      # To write changes to the file, use:
+      File.open(Zlown::Config::BOOT_SCRIPT, 'w') do |file|
+        puts "Writting file #{Zlown::Config::BOOT_SCRIPT}"
+        file.puts content
+      end
+    end
+
     def self.init_rc_local(args = [], opts = {})
-      # TODO: Implement
+      Core.init_boot_script(args, opts)
+
+      config = Core.load_config(args, opts)
+
+      template = File.read(Zlown::Config::RCLOCAL_TEMPLATE)
+      # To write changes to the file, use:
+      File.open(Zlown::Config::RCLOCAL_CONFIG, 'w') do |file|
+        puts "Writting file #{Zlown::Config::RCLOCAL_CONFIG}"
+        file.puts content
+      end
     end
 
     def self.update_configs(args = [], opts = {})
