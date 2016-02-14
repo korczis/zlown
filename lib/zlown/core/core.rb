@@ -32,7 +32,7 @@ module Zlown
       system cmd
     end
 
-    def self.init(args = [], opts = {})
+    def self.init_dirs(args = [], opts = {})
       unless File.directory?(APP_DIR)
         puts "Creating directory #{APP_DIR}"
         FileUtils.mkdir_p(APP_DIR)
@@ -47,7 +47,9 @@ module Zlown
         puts "Creating directory #{RUN_DIR}"
         FileUtils.mkdir_p(RUN_DIR)
       end
+    end
 
+    def self.init_service_template(args = [], opts = {})
       template = File.read(SERVICE_TEMPLATE)
       content = template.gsub('#{RUN_CMD}', RUN_CMD)
 
@@ -56,7 +58,9 @@ module Zlown
         puts "Writting file #{SERVICE_FILE}"
         file.puts content
       end
+    end
 
+    def self.init_config_file(args = [], opts = {})
       config = {}
       if File.exist?(CONFIG_FILE)
         config = YAML.load(File.open(CONFIG_FILE))
@@ -70,12 +74,9 @@ module Zlown
       File.open(CONFIG_FILE, 'w') do |f|
         f.write config.to_yaml
       end
+    end
 
-      # See https://www.offensive-security.com/kali-linux/kali-linux-evil-wireless-access-point/
-      cmd = "sed -i 's#^DAEMON_CONF=.*#DAEMON_CONF=/etc/hostapd/hostapd.conf#' /etc/init.d/hostapd"
-      puts cmd
-      system cmd
-
+    def self.init_systemctl(args = [], opts = {})
       # TODO: Process dnsmasq.conf and hostapd.conf
 
       cmd = "systemctl enable #{HOSTAPD_SERVICE}"
@@ -93,6 +94,37 @@ module Zlown
       cmd = "systemctl start #{DNSMASQ_SERVICE}"
       puts cmd
       system cmd
+    end
+
+    def self.init_dnsmaq(args = [], opts = {})
+      # TODO: Implement
+    end
+
+    def self.init_hostapd(args = [], opts = {})
+      # See https://www.offensive-security.com/kali-linux/kali-linux-evil-wireless-access-point/
+      cmd = "sed -i 's#^DAEMON_CONF=.*#DAEMON_CONF=/etc/hostapd/hostapd.conf#' /etc/init.d/hostapd"
+      puts cmd
+      system cmd
+    end
+
+    def self.init_rc_local(args = [], opts = {})
+      # TODO: Implement
+    end
+
+    def self.init(args = [], opts = {})
+      Core.init_dirs(args, opts)
+
+      Core.init_service_template(args, opts)
+
+      Core.init_config_file(args, opts)
+
+      Core.init_dnsmaq(args, opts)
+
+      Core.init_hostapd(args, opts)
+
+      Core.init_rc_local(args, opts)
+
+      Core.init_systemctl(args, opts)
     end
   end
 end
