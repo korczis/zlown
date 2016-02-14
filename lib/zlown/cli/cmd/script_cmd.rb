@@ -15,7 +15,7 @@ module Zlown::CLI
       end
 
       cmd.desc 'Stop httpry'
-      cmd.command 'start' do |script_cmd|
+      cmd.command 'stop' do |script_cmd|
         script_cmd.action do |global_options, options, args|
           Zlown::Script.httpry_stop(args, options)
         end
