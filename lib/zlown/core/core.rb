@@ -4,16 +4,16 @@
 # This source code is licensed under the MIT-style license found in the
 # LICENSE file in the root directory of this source tree.
 
-module Zlown
-  class Daemon
-    def run(args = [], opts = {})
-      puts 'Running Zlown loop'
-      STDOUT.flush
+require 'FileUtils'
 
-      while true
-        sleep 1
+module Zlown
+  class Core
+    APP_DIR = File.expand_path('~/.zlown')
+
+    def self.init(args = [], opts = {})
+      unless File.directory?(APP_DIR)
+        FileUtils.mkdir_p(APP_DIR)
       end
     end
   end
 end
-
