@@ -23,6 +23,9 @@ module Zlown
 
     RUN_CMD = "#{APP_BINARY} run"
 
+    DNSMASQ_SERVICE = 'dnsmasq.service'
+    HOSTAPD_SERVICE = 'hostapd.service'
+
     def self.install(args = [], opts = {})
       cmd = 'apt-get install -y hostapd dnsmasq wireless-tools iw wvdial'
       puts cmd
@@ -61,7 +64,7 @@ module Zlown
 
       cli = HighLine.new
       config[:upstream] = cli.ask('upstream interface?') { |q| q.default = config[:upstream] || 'eth0' }
-      config[:ap] = cli.ask('wifi ap interface?') { |q| q.default = config[:ap] || 'wlan0' }
+      config[:ap] = cli.ask('wifi ap interface?') { |q| q.default = config[:ap] || 'wlan0pa' }
 
       puts "Writting config to #{CONFIG_FILE}"
       File.open(CONFIG_FILE, 'w') do |f|
@@ -70,6 +73,24 @@ module Zlown
 
       # See https://www.offensive-security.com/kali-linux/kali-linux-evil-wireless-access-point/
       cmd = "sed -i 's#^DAEMON_CONF=.*#DAEMON_CONF=/etc/hostapd/hostapd.conf#' /etc/init.d/hostapd"
+      puts cmd
+      system cmd
+
+      # TODO: Process dnsmasq.conf and hostapd.conf
+
+      cmd = "systemctl enable #{HOSTAPD_SERVICE}"
+      puts cmd
+      system cmd
+
+      cmd = "systemctl enable #{DNSMASQ_SERVICE}"
+      puts cmd
+      system cmd
+
+      cmd = "systemctl start #{HOSTAPD_SERVICE}"
+      puts cmd
+      system cmd
+
+      cmd = "systemctl start #{DNSMASQ_SERVICE}"
       puts cmd
       system cmd
     end
