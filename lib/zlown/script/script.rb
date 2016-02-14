@@ -6,8 +6,10 @@
 
 module Zlown
   class Script
-    def self.run(args = [], opts = {})
-      puts "Running #{args}"
+    def self.httpry(args = [], opts = {})
+      cmd = 'httpry -d -P /root/.zlown/run/httpry.pid -i wlan1 -o /root/.zlown/data/httpry.log -b /root/.zlown/data/httpry.bin'
+      puts cmd
+      system cmd
     end
   end
 end
