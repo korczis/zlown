@@ -156,6 +156,8 @@ module Zlown
       config = Core.load_config(args, opts)
 
       template = File.read(Zlown::Config::RCLOCAL_TEMPLATE)
+      content = template
+
       # To write changes to the file, use:
       File.open(Zlown::Config::RCLOCAL_CONFIG, 'w') do |file|
         puts "Writting file #{Zlown::Config::RCLOCAL_CONFIG}"
