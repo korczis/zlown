@@ -113,13 +113,7 @@ module Zlown
       # TODO: Implement
     end
 
-    def self.init(args = [], opts = {})
-      Core.init_dirs(args, opts)
-
-      Core.init_service_template(args, opts)
-
-      Core.init_config_file(args, opts)
-
+    def self.update_configs(args = [], opts = {})
       Core.init_dnsmaq(args, opts)
 
       Core.init_hostapd(args, opts)
@@ -127,6 +121,16 @@ module Zlown
       Core.init_rc_local(args, opts)
 
       Core.init_systemctl(args, opts)
+    end
+
+    def self.init(args = [], opts = {})
+      Core.init_dirs(args, opts)
+
+      Core.init_service_template(args, opts)
+
+      Core.init_config_file(args, opts)
+
+      Core.update_configs(args, opts)
     end
   end
 end

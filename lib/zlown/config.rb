@@ -11,6 +11,12 @@ module Zlown
 
     CONFIG_FILE = File.join(APP_DIR, 'zlown.yml')
 
+    DNSMASQ_CONFIG = '/etc/dnsmasq.conf'
+    DNSMASQ_TEMPLATE = File.expand_path('../../../etc/dnsmasq.conf', __FILE__)
+
+    HOSTAPD_CONFIG = '/etc/hostapd/hostapd.conf'
+    HOSTAPD_TEMPLATE = File.expand_path('../../../etc/hostapd/hostapd.conf', __FILE__)
+
     HTTPRY_PID_FILE = File.join(APP_DIR, 'run', 'httpry.pid')
 
     DATA_DIR = File.join(APP_DIR, 'data')
@@ -18,6 +24,9 @@ module Zlown
 
     SERVICE_TEMPLATE = File.expand_path('../../../etc/systemd/system/zlown.service', __FILE__)
     SERVICE_FILE = File.expand_path("#{APP_DIR}/zlown.service")
+
+    RCLOCAL_CONFIG = '/etc/rc.local'
+    RCLOCAL_TEMPLATE = File.expand_path('../../../etc/rc.local', __FILE__)
 
     RUN_CMD = "#{APP_BINARY} run"
 
