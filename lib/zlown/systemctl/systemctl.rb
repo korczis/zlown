@@ -6,7 +6,7 @@
 
 module Zlown
   class Systemctl
-    SERVICE_FILE = File.expand_path('../../../../etc/systemd/system/zlown.service', __FILE__)
+    SERVICE_FILE = File.expand_path('~/.zlown/zlown.service')
     SERVICE_NAME = 'zlown'
 
     def self.enable(args = [], opts = {})

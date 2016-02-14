@@ -8,12 +8,15 @@ require 'fileutils'
 
 module Zlown
   class Core
+    SERVICE_FILE = File.expand_path('../../../../etc/systemd/system/zlown.service', __FILE__)
     APP_DIR = File.expand_path('~/.zlown')
 
     def self.init(args = [], opts = {})
       unless File.directory?(APP_DIR)
         FileUtils.mkdir_p(APP_DIR)
       end
+
+      FileUtils.copy(SERVICE_FILE, APP_DIR)
     end
   end
 end
