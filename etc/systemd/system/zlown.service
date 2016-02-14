@@ -4,7 +4,7 @@ After=network.target dnsmasq.target hostapd.target
 
 [Service]
 # Type=forking
-ExecStart=/root/src/zlown/bin//zlown run
+ExecStart=#{RUN_CMD}
 # ExecReload=/bin/kill -HUP $MAINPID
 PIDFile=/var/run/zlown.pid
 

@@ -8,15 +8,26 @@ require 'fileutils'
 
 module Zlown
   class Core
-    SERVICE_FILE = File.expand_path('../../../../etc/systemd/system/zlown.service', __FILE__)
     APP_DIR = File.expand_path('~/.zlown')
+    APP_BINARY = File.expand_path('../../../../bin/zlown')
+
+    SERVICE_TEMPLATE = File.expand_path('../../../../etc/systemd/system/zlown.service', __FILE__)
+    SERVICE_FILE = File.expand_path("#{APP_DIR}/zlown.service")
+
+    RUN_CMD = "#{APP_BINARY} run"
 
     def self.init(args = [], opts = {})
       unless File.directory?(APP_DIR)
         FileUtils.mkdir_p(APP_DIR)
       end
 
-      FileUtils.copy(SERVICE_FILE, APP_DIR)
+      template = File.read(SERVICE_TEMPLATE)
+      content = template.gsub('#{RUN_CMD}', RUN_CMD)
+
+      # To write changes to the file, use:
+      File.open(SERVICE_FILE, 'w') do |file|
+        file.puts content
+      end
     end
   end
 end
