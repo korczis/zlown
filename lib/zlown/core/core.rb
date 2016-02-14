@@ -49,6 +49,11 @@ module Zlown
         puts "Writting file #{SERVICE_FILE}"
         file.puts content
       end
+
+      # See https://www.offensive-security.com/kali-linux/kali-linux-evil-wireless-access-point/
+      cmd = "sed -i 's#^DAEMON_CONF=.*#DAEMON_CONF=/etc/hostapd/hostapd.conf#' /etc/init.d/hostapd"
+      puts cmd
+      system cmd
     end
   end
 end
