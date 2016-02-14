@@ -8,7 +8,7 @@ module Zlown::CLI
     c.desc 'Enable systemctl service'
     c.command 'enable' do |cmd|
       cmd.action do |global_options, options, args|
-        puts "Enabling systemctl service'
+        puts "Enabling systemctl service"
       end
     end
  
