@@ -102,7 +102,7 @@ module Zlown
       config = Core.load_config(args, opts)
 
       template = File.read(Zlown::Config::DNSMASQ_TEMPLATE)
-      content = template.gsub('#{IFACE_AP}', config[:ap])
+      content = template.gsub('${IFACE_AP}', config[:ap])
 
       # To write changes to the file, use:
       File.open(Zlown::Config::DNSMASQ_CONFIG, 'w') do |file|
@@ -121,10 +121,10 @@ module Zlown
 
       template = File.read(Zlown::Config::HOSTAPD_TEMPLATE)
       content = template
-                  .gsub('#{IFACE}', config[:ap])
-                  .gsub('#{DRIVER}', config[:driver])
-                  .gsub('#{SSID}', config[:ssid])
-                  .gsub('#{CHANNEL}', config[:channel])
+                  .gsub('${IFACE}', config[:ap])
+                  .gsub('${DRIVER}', config[:driver])
+                  .gsub('${SSID}', config[:ssid])
+                  .gsub('${CHANNEL}', config[:channel])
 
       # To write changes to the file, use:
       File.open(Zlown::Config::HOSTAPD_CONFIG, 'w') do |file|
@@ -138,10 +138,8 @@ module Zlown
 
       template = File.read(Zlown::Config::BOOT_SCRIPT_TEMPLATE)
       content = template
-                  .gsub('#{IFACE}', config[:ap])
-                  .gsub('#{DRIVER}', config[:driver])
-                  .gsub('#{SSID}', config[:ssid])
-                  .gsub('#{CHANNEL}', config[:channel])
+                  .gsub('${IFACE_AP}', config[:ap])
+                  .gsub('${IFACE_UPSTREAM}', config[:upstream])
 
       # To write changes to the file, use:
       File.open(Zlown::Config::BOOT_SCRIPT, 'w') do |file|
