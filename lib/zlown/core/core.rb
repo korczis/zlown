@@ -11,6 +11,8 @@ module Zlown
     APP_DIR = File.expand_path('~/.zlown')
     APP_BINARY = File.expand_path('../../../../bin/zlown', __FILE__)
 
+    DATA_DIR = File.join(APP_DIR, 'data')
+
     SERVICE_TEMPLATE = File.expand_path('../../../../etc/systemd/system/zlown.service', __FILE__)
     SERVICE_FILE = File.expand_path("#{APP_DIR}/zlown.service")
 
@@ -20,6 +22,11 @@ module Zlown
       unless File.directory?(APP_DIR)
         puts "Creating directory #{APP_DIR}"
         FileUtils.mkdir_p(APP_DIR)
+      end
+
+      unless File.directory?(DATA_DIR)
+        puts "Creating directory #{DATA_DIR}"
+        FileUtils.mkdir_p(DATA_DIR)
       end
 
       template = File.read(SERVICE_TEMPLATE)
