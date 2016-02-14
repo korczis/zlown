@@ -5,6 +5,7 @@
 # LICENSE file in the root directory of this source tree.
 
 require 'fileutils'
+require 'highline'
 
 module Zlown
   class Core
@@ -49,6 +50,10 @@ module Zlown
         puts "Writting file #{SERVICE_FILE}"
         file.puts content
       end
+
+      cli = HighLine.new
+      iface_upstream = cli.ask('upstream interface?') { |q| q.default = 'eth1' }
+      iface_ap = cli.ask('wifi ap interface?') { |q| q.default = 'wlan1' }
 
       # See https://www.offensive-security.com/kali-linux/kali-linux-evil-wireless-access-point/
       cmd = "sed -i 's#^DAEMON_CONF=.*#DAEMON_CONF=/etc/hostapd/hostapd.conf#' /etc/init.d/hostapd"
