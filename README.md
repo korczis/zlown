@@ -4,6 +4,7 @@ Rogue Access Point
 
 ## Prerequisites
 
+- apt-get
 - systemd
 - dnsmasq
 - hostapd

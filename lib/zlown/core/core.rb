@@ -19,6 +19,12 @@ module Zlown
 
     RUN_CMD = "#{APP_BINARY} run"
 
+    def self.install(args = [], opts = {})
+      cmd = 'apt-get install -y hostapd dnsmasq wireless-tools iw wvdial'
+      puts cmd
+      system cmd
+    end
+
     def self.init(args = [], opts = {})
       unless File.directory?(APP_DIR)
         puts "Creating directory #{APP_DIR}"
