@@ -15,3 +15,6 @@ Rogue Access Point
 
 - `git clone https://github.com/korczis/zlown.git`
 - `bundle`
+- `./bin/zlown init`
+- `./bin/zlown enable`
+- `./bin/zlown start`
