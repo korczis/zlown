@@ -11,6 +11,8 @@ module Zlown
 
     CONFIG_FILE = File.join(APP_DIR, 'zlown.yml')
 
+    HTTPRY_PID_FILE = File.join(APP_DIR, 'run', 'httpry.pid')
+
     DATA_DIR = File.join(APP_DIR, 'data')
     RUN_DIR = File.join(APP_DIR, 'run')
 
@@ -21,5 +23,8 @@ module Zlown
 
     DNSMASQ_SERVICE = 'dnsmasq.service'
     HOSTAPD_SERVICE = 'hostapd.service'
+
+    ZLOWN_SERVICE_FILE = File.expand_path('~/.zlown/zlown.service')
+    ZLOWN_SERVICE_NAME = 'zlown'
   end
 end
