@@ -6,10 +6,16 @@
 
 module Zlown
   class Script
-    def self.httpry(args = [], opts = {})
-      cmd = 'httpry -d -P /root/.zlown/run/httpry.pid -i wlan1 -o /root/.zlown/data/httpry.log -b /root/.zlown/data/httpry.bin'
+    HTTPRY_PID_FILE = '/root/.zlown/run/httpry.pid'
+
+    def self.httpry_start(args = [], opts = {})
+      cmd = "httpry -d -P #{HTTPRY_PID_FILE} -i wlan1 -o /root/.zlown/data/httpry.log -b /root/.zlown/data/httpry.bin"
       puts cmd
       system cmd
+    end
+
+    def self.httpry_stop(args = [], opts = {})
+      Process.kill('HUP', File.open(HTTPRY_PID_FILE).read)
     end
   end
 end
