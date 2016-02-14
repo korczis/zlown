@@ -8,7 +8,7 @@ require 'fileutils'
 
 module Zlown
   class Core
-    APP_DIR = File.expand_path('/root/.zlown')
+    APP_DIR = File.expand_path('~/.zlown')
     APP_BINARY = File.expand_path('../../../../bin/zlown', __FILE__)
 
     SERVICE_TEMPLATE = File.expand_path('../../../../etc/systemd/system/zlown.service', __FILE__)
