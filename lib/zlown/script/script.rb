@@ -15,7 +15,10 @@ module Zlown
     end
 
     def self.httpry_stop(args = [], opts = {})
-      Process.kill('HUP', File.open(HTTPRY_PID_FILE).read.to_i)
+      pid = File.open(HTTPRY_PID_FILE).read.to_i
+      cmd = "kill #{pid}"
+      puts cmd
+      system cmd
     end
   end
 end
