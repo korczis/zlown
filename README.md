@@ -4,7 +4,7 @@ Rogue Access Point
 
 ## Prerequisites
 
-- apt-get
+- apt-get (developed using [Kali Linux](https://www.kali.org/))
 - systemd
 - dnsmasq
 - hostapd
