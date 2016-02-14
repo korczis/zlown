@@ -7,14 +7,14 @@
 module Zlown
   module Config
     APP_DIR = File.expand_path('~/.zlown')
-    APP_BINARY = File.expand_path('../../../../bin/zlown', __FILE__)
+    APP_BINARY = File.expand_path('../../../bin/zlown', __FILE__)
 
     CONFIG_FILE = File.join(APP_DIR, 'zlown.yml')
 
     DATA_DIR = File.join(APP_DIR, 'data')
     RUN_DIR = File.join(APP_DIR, 'run')
 
-    SERVICE_TEMPLATE = File.expand_path('../../../../etc/systemd/system/zlown.service', __FILE__)
+    SERVICE_TEMPLATE = File.expand_path('../../../etc/systemd/system/zlown.service', __FILE__)
     SERVICE_FILE = File.expand_path("#{APP_DIR}/zlown.service")
 
     RUN_CMD = "#{APP_BINARY} run"
