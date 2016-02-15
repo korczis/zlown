@@ -22,6 +22,10 @@ Rogue Access Point
 ## How To
 
 - `gem install zlown`
+- `zlown install`
+- `zlown init`
+- `zlown enable`
+- `zlown start`
 
 ***OR***
 
