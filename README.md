@@ -36,13 +36,30 @@ Rogue and Evil Access Point
 
 ## Prerequisites
 
+## Core
+
+These are must to have.
+
 - apt-get (developed using [Kali Linux](https://www.kali.org/))
 - systemd
-- dnsmasq
-- hostapd
 - ruby
 - rubygems
 - bundler
+
+## Nice to have
+
+These will be installed during `zlown install` if not present.
+
+- dnsmasq
+- hostapd
+
+## Optional
+
+Presence of these tools affects which features will be available.
+
+- httpry
+- ngrep
+- sslsniff, sslstrip, sslsplit
 
 ## Installation
 
