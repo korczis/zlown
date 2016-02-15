@@ -9,6 +9,8 @@ Rogue and Evil Access Point
 
 ## Features implemented
 
+- Intuitive CLI
+- Configurable (~/.zlown/zlown.yml)
 - Connects to internet using LTE
 - Shares connectivity over WiFi
 - Logs all HTTP trafic
@@ -42,7 +44,7 @@ Rogue and Evil Access Point
 - rubygems
 - bundler
 
-## How To
+## Installation
 
 - `gem install zlown`
 - `zlown install`
@@ -59,3 +61,12 @@ Rogue and Evil Access Point
 - `./bin/zlown init`
 - `./bin/zlown enable`
 - `./bin/zlown start`
+
+## Details
+
+- zlown main entrypoint is zlown systemd service
+  - run `zlown systemctl status` or `systemctl status zlown` to obtain info about running zlown service
+- All zlown related stuff is in ~/.zlown folder
+- Main config is stored in ~/.zlown/zlown.yml
+- All captured data are stored in ~/.zlown/data
+
