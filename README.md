@@ -1,6 +1,6 @@
 # zlown
 
-Rogue Access Point
+Rogue and Evil Access Point
 
 ## Status
 
