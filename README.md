@@ -40,7 +40,7 @@ Rogue and Evil Access Point
 
 These are must to have.
 
-- apt-get (developed using [Kali Linux](https://www.kali.org/))
+- apt-get (zlown was developed using [Kali Linux](https://www.kali.org/))
 - systemd
 - ruby
 - rubygems
