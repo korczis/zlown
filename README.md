@@ -23,7 +23,7 @@ Rogue and Evil Access Point
 - [Evil Twin WiFi](https://en.wikipedia.org/wiki/Evil_twin_(wireless_networks))
 - Auto terminate (RST) connections based on criteria specified (pcap filter)
 - On-the-fly trafic modification
-- Fake updates
+- [Fake updates](https://github.com/websploit/websploit)
 - REST API
 - Web GUI
 
