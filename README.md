@@ -21,6 +21,10 @@ Rogue Access Point
 
 ## How To
 
+- `gem install zlown`
+
+***OR****
+
 - `git clone https://github.com/korczis/zlown.git`
 - `bundle`
 - `./bin/zlown install`
