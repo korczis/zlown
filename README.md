@@ -49,6 +49,7 @@ Rogue Access Point
 ***OR***
 
 - `git clone https://github.com/korczis/zlown.git`
+- `cd zlown`
 - `bundle`
 - `./bin/zlown install`
 - `./bin/zlown init`
