@@ -17,7 +17,7 @@ Rogue and Evil Access Point
 
 ## Features planned
 
-- HTTPS sniffing of [non-HSTS](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security) sites (sslsniff, sslstrip, sslsplit)
+- HTTPS sniffing of [non-HSTS](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security) sites ([sslsniff, sslstrip, sslsplit](https://en.wikipedia.org/wiki/Moxie_Marlinspike))
 - ARP spoofing
 - DNS spoofing
 - Evil Twin WiFi
