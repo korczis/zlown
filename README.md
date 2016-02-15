@@ -2,6 +2,20 @@
 
 Rogue Access Point
 
+## Features implemented
+
+- Connects to internet using LTE
+- Shares connectivity over WiFi
+- Logs all HTTP trafic
+
+## Features planned
+
+- HTTPS sniffing
+- Evil Twin WiFi
+- Auto terminate (RST) connections based on criteria specified (pcap filter)
+- On-the-fly trafic modification
+- Fake updates
+
 ## Required HW
 
 - [Raspberry Pi 2](http://www.amazon.de/Raspberry-Pi-quad-core-Cortex-A7-compatibility/dp/B00T2U7R7I/ref=sr_1_1?s=ce-de&ie=UTF8&qid=1455555744&sr=1-1&keywords=rpi2)
