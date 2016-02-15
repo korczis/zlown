@@ -2,6 +2,11 @@
 
 Rogue Access Point
 
+## Status
+
+[![Gem Version](https://badge.fury.io/rb/zlown@2x.png)](https://badge.fury.io/rb/zlown)
+[![Downloads](http://img.shields.io/gem/dt/zlown.svg)](http://rubygems.org/gems/zlown)
+
 ## Features implemented
 
 - Connects to internet using LTE
