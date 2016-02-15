@@ -4,7 +4,7 @@ Rogue Access Point
 
 ## Status
 
-[![Gem Version](https://badge.fury.io/rb/zlown@2x.png)](https://badge.fury.io/rb/zlown)
+[![Gem Version](https://badge.fury.io/rb/gooddata.png)](http://badge.fury.io/rb/gooddata)
 [![Downloads](http://img.shields.io/gem/dt/zlown.svg)](http://rubygems.org/gems/zlown)
 
 ## Features implemented
