@@ -20,6 +20,8 @@ Rogue Access Point
 - Auto terminate (RST) connections based on criteria specified (pcap filter)
 - On-the-fly trafic modification
 - Fake updates
+- REST API
+- Web GUI
 
 ## Required HW
 
