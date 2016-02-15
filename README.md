@@ -15,7 +15,9 @@ Rogue Access Point
 
 ## Features planned
 
-- HTTPS sniffing
+- HTTPS sniffing of non-HSTS sites (sslsniff, sslstrip, sslsplit)
+- ARP spoofing
+- DNS spoofing
 - Evil Twin WiFi
 - Auto terminate (RST) connections based on criteria specified (pcap filter)
 - On-the-fly trafic modification
