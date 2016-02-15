@@ -66,6 +66,7 @@ Rogue and Evil Access Point
 
 - zlown main entrypoint is zlown systemd service
   - run `zlown systemctl status` or `systemctl status zlown` to obtain info about running zlown service
+  - run `zlown systemctl log` or `journlctl -u zlown` to see complete zlown service log
 - All zlown related stuff is in ~/.zlown folder
 - Main config is stored in ~/.zlown/zlown.yml
 - All captured data are stored in ~/.zlown/data
