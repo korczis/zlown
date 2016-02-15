@@ -23,7 +23,7 @@ Rogue Access Point
 
 - `gem install zlown`
 
-***OR****
+***OR***
 
 - `git clone https://github.com/korczis/zlown.git`
 - `bundle`
