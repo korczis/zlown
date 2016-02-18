@@ -91,3 +91,8 @@ Presence of these tools affects which features will be available.
 - Main config is stored in ~/.zlown/zlown.yml
 - All captured data are stored in ~/.zlown/data
 
+## Warranty and Disclaimer
+
+- The Software is provided "as is," with all faults, defects and errors, and without warranty of any kind.
+- No Liability. Licensor does not warrant that the Software will be free of bugs, errors, viruses or other defects, and Licensor shall have no liability of any kind for the use of or inability to use the software, the software content or any associated service.
+- zlown hould be used for authorized testing and/or educational purposes only. No Exceptions.
